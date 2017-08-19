@@ -73,4 +73,34 @@ console.log(flight.status);
 //→最初にfalseが返されると、そのあとを見に行かなくなるから
 
 //関数・配列・オブジェクトは参照渡し(メモリの番地を教えるよ)
- 
+
+const shiobject =function(o){
+    const F = function(){}
+    F.prototype = o; //__proto__に入る
+    return new F();
+};
+
+
+const obj = {
+    name:'shiori'
+};
+
+console.log(obj.name);
+
+if(obj.__proto__ == Object.prototype){
+    console.log('trueです');
+};
+
+const ary = [1];
+if (ary.__proto__ == Array.prototype) {
+    console.log('trueだにゃ');
+}
+
+if (Array.prototype.__proto__ == Object.prototype) {
+    console.log('trueだにゃ');
+}
+
+const num = 1;
+if (num.__proto__ == Number.prototype) {
+    console.log('trueでごわす');
+}
