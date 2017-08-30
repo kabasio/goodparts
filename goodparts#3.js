@@ -41,6 +41,7 @@ if (typeof Object.create !== 'function') {
   };
 }
 const anotherStooge = Object.create(stooge);
+// Object.prototaype
 
 anotherStooge.first_name = 'Harry';
 anotherStooge.middle_name = 'moses';
@@ -55,3 +56,23 @@ console.log(typeof flight.toString); //
 console.log(anotherStooge.last_name); // 'Howrd'
 console.log(anotherStooge.profession);// 'actor'
 
+anotherStooge.hasOwnProperty('profession');
+// 関数をつくると、nameの値に関数名が入ってるconstractorっていうオブジェクトがprototypeのなかにできる
+
+/* const func = function() {
+~~~~~
+};
+
+func.prototype = {
+  constractor:{
+    argument: null;
+    caller: null;
+    length: 1;
+    name: func;
+    __proto__:
+  }
+}
+__proto__:Object
+
+*/
+console.log(flight.hasOwnProperty('flight')); //
