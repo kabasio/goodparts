@@ -36,21 +36,32 @@ console.log(sum); // 7
 
 myObject.double = function () {
 //  const that = this;
-
   const helper = () => {
     this.value = add(this.value, this.value);
   };
-
   helper();
 };
 
 // helperは単品で実行されてるので、thisはグローバルオブジェクトを見に行ってしまう。
 // それを回避するのがアロー関数
-
+/* 
 console.log('before double');
 console.log(myObject.value);
 myObject.double();
 // result undefined
 console.log('after double');
 console.log(myObject.value);
+*/
 
+// memo 19日はこのプロトタイプのところから
+const Quo = function (string) {
+  this.status = string;
+};
+
+Quo.prototype.get_status = function () {
+  return this.status;
+};
+
+const myQuo = new Quo('confused');
+
+console.log(myQuo.get_status);
