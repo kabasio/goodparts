@@ -54,9 +54,11 @@ console.log(myObject.value);
 */
 
 // memo 19日はこのプロトタイプのところから
-const Quo = function (string) {
-  this.status = string;
+const Quo = function (str) {
+  this.status = str;
 };
+
+console.log(Quo.status);// undefined
 
 Quo.prototype.get_status = function () {
   return this.status;
@@ -64,4 +66,4 @@ Quo.prototype.get_status = function () {
 
 const myQuo = new Quo('confused');
 
-console.log(myQuo.get_status);
+console.log(myQuo.get_status()); // confused
