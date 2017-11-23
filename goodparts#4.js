@@ -95,5 +95,32 @@ myObject.double = function() {
 myObject.double(); // myObject.valueの値がnのとき、2nが入る
 console.log(myObject.value);
 
+
 const sum = add(3, 4);
 console.log(sum);
+
+// コンストラクタ呼び出しパターン
+
+const Quo = function(str) {
+  this.status = str;
+}; // 文字列を引数に取り、受け取った文字列をQuo.statusに格納する
+
+Quo.prototype.get_status = function() {
+  return this.status;
+}; // Quoのprototypeプロパティにget_statusメソッドを持たせることで、Quoのインスタンスで利用可能にする
+
+const myQuo = new Quo('confused'); // Quoのインスタンスを生成する new演算子がついている関数をコンストラクタと呼ばれる
+console.log(myQuo.status); //confusedが出力される
+
+// apply 呼び出しパターン
+
+const array = [3, 4]; 
+const Sum = add.apply(null, array); // thisにnullが入る? addは引数に3,4を取って実行される
+console.log(Sum); //7
+
+const statusObject = {
+  status: 'A-OK',
+};
+
+const status = Quo.prototype.get_status.apply(statusObject); 
+console.log(status); // A-OK
