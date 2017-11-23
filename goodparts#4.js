@@ -1,10 +1,6 @@
-const add = function (a, b) {
-  return a + b;
-};
+/* console.log(add(3, 5));
 
-console.log(add(3, 5));
-
-/* const myObject = {
+ const myObject = {
   value: 0,
   increment: function(inc) {
     const added = typeof inc === 'number' ? inc : 1;
@@ -13,26 +9,6 @@ console.log(add(3, 5));
     this.value = this.value + added;
   },
 };
-
-myObject.increment(3);
-console.log(myObject.value); // 1
-*/
-
-const myObject = {
-  value: 0,
-  increment(inc) {
-    this.value += typeof inc === 'number' ? inc : 1;
-    console.log(this.value);
-  },
-};
-
-myObject.increment();
-
-console.log(myObject.value);// 1
-
-const sum = add(3, 4);
-
-console.log(sum); // 7
 
 myObject.double = function () {
 //  const that = this;
@@ -51,7 +27,7 @@ myObject.double();
 // result undefined
 console.log('after double');
 console.log(myObject.value);
-*/
+
 
 // memo 19日はこのプロトタイプのところから
 const Quo = function (str) {
@@ -66,4 +42,58 @@ Quo.prototype.get_status = function () {
 
 const myQuo = new Quo('confused');
 
-console.log(myQuo.get_status()); // confused
+console.log(myQuo.get_status()); // confused 
+
+const closet = 'pants';
+
+if (closet === 'belt') {
+  console.log('beltあるよ');
+} else if (closet === 'pants') {
+  console.log('pantsあるよ');
+} else {
+  console.log('pantsとbelt以外はあるかも…');
+} */
+
+// 2017/11/22
+
+function add(a, b) {
+  return a + b; //returnが来たら　関数の実行が終わる
+}
+
+add(3, 5); // 引数の書き方間違えた 
+
+const myObject = {
+  value: 0,
+  increment: function (inc) {
+    this.value += typeof inc === 'number' ? inc : 1;
+    //this.value = this.value + typeof inc === 'number' ? inc : 1; と同じ
+  },
+};
+
+myObject.increment();
+console.log(myObject.value);
+
+myObject.increment(2); // ちゃんと増える
+console.log(myObject.value);
+
+// ▼内部関数から、外部関数と同じthisをとってくる
+
+function add(a, b) {
+  return a + b; //returnが来たら　関数の実行が終わる
+}
+
+myObject.double = function() {
+  const that = this; 
+
+  const helper = function() {
+    that.value = add(that.value,that.value); //myObjectのvalueにアクセスできている
+  };
+
+  helper(); //実行時コンテキスト ( XXX.xxx )がないとthisはグローバルになる
+}
+
+myObject.double(); // myObject.valueの値がnのとき、2nが入る
+console.log(myObject.value);
+
+const sum = add(3, 4);
+console.log(sum);
