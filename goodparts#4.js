@@ -124,3 +124,13 @@ const statusObject = {
 
 const status = Quo.prototype.get_status.apply(statusObject); 
 console.log(status); // A-OK
+
+const SUM = function () {
+  let i, SUM = 0; //空の変数i SUMを初期化
+  for (i = 0; i < arguments.length; i += 1) {
+      SUM += arguments[i];
+  } // argumentの配列に含まれる数値をSUMに足していく
+  return SUM; // SUMの値を返す
+};
+
+console.log(SUM(4, 8, 15, 16, 23, 42)); // 108
