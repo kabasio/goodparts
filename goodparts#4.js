@@ -160,6 +160,29 @@ try_it();
 
 Function.prototype.method = function (name, func) {
   this.prototype[name] = func;
+  return this;
 };
 
+console.log(plus.method); //[Function]
 
+console.log( -10 / 3); //-3.3333333333...
+
+Number.method('integer', function() {
+  return Math[this < 0 ? 'ceil' : 'floor'](this);
+});
+
+console.log((-10.5).integer());
+
+console.log((-10 / 3).integer());
+
+// 再帰
+
+const hanoi = function (disc, src, aux, dst) {
+  if (disc > 0) {
+    hanoi (disc - 1, src, dst, aux);
+    console.log('Move disc' + disc + 'from' + src + 'to' + dst);
+    hanoi(disc - 1, aux, src, dst);
+  }
+};
+
+hanoi(3, 'Src','Aux', 'Dst');
