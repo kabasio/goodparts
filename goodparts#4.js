@@ -134,3 +134,32 @@ const SUM = function () {
 };
 
 console.log(SUM(4, 8, 15, 16, 23, 42)); // 108
+
+// p37 例外
+
+const plus = function(a,b) {
+  if (typeof a !== 'number' || typeof b !=='number') {
+    throw {
+      name: 'TypeError',
+      message:'add needs number',
+    };
+  }
+  return a + b;
+};
+
+const try_it = function () {
+  try {
+    plus('seven');
+  } catch (e) {
+      console.log(e.name + ':' + e.message);
+  }
+};
+try_it(); 
+
+// p38 変数型の拡張
+
+Function.prototype.method = function (name, func) {
+  this.prototype[name] = func;
+};
+
+
